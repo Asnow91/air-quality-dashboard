@@ -1,0 +1,3 @@
+openaq:
+  base-url: https://api.openaq.org/v3
+  api-key: ${OPENAQ_KEY}
