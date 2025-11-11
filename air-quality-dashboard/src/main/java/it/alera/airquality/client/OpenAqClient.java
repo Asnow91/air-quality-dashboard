@@ -13,11 +13,10 @@ public class OpenAqClient {
   public OpenAqClient(@Qualifier("openAqWebClient") WebClient webClient) {
 	    this.webClient = webClient;
 	  }
-//it.alera.airquality.client.OpenAqClient
 
 public String listLocationsNearRomePm25() {
- // Roma (lat,lon) = 41.9028,12.4964  ← l'API vuole lat,lon
- String latLon = "41.9028,12.4964";
+
+	String latLon = "41.9028,12.4964";
 
  System.out.println("[OpenAQ] GET /locations?coordinates=" + latLon + "&radius=12000&parameters_id=2&limit=5&country=IT");
 

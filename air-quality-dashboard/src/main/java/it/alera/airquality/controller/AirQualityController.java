@@ -58,6 +58,11 @@ public class AirQualityController {
       }
     }
 
+    @GetMapping("/api/air/near-rome")
+    public Object nearRome() {
+      return client.listLocationsNearRomePm25();
+    }
+
 
 
 }
