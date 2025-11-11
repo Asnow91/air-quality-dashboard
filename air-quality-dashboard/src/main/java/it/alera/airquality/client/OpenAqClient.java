@@ -23,7 +23,7 @@ public String listLocationsNearRomePm25() {
  return webClient.get()
      .uri(b -> b.path("/locations")
                 .queryParam("coordinates", latLon)   // lat,lon (NON invertire)
-                .queryParam("radius", 12000)         // in metri
+                .queryParam("radius", 20000)         // in metri
                 .queryParam("parameters_id", 2)      // PM2.5
                 .queryParam("iso", "IT")         // filtra Italia
                 .queryParam("limit", 5)
@@ -56,6 +56,7 @@ public String listLocationsNearRomePm25() {
 	      .bodyToMono(String.class)
 	      .block();
 	}
+
 
 
 }
