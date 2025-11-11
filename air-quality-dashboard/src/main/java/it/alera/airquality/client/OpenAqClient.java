@@ -16,7 +16,7 @@ public class OpenAqClient {
 
 public String listLocationsNearRomePm25() {
 
-	String latLon = "41.9028,12.4964";
+	String latLon = "41.7287,12.2789";
 
  System.out.println("[OpenAQ] GET /locations?coordinates=" + latLon + "&radius=12000&parameters_id=2&limit=5&country=IT");
 

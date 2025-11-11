@@ -18,8 +18,8 @@ public class AirQualityController {
 
     @GetMapping("/api/air/now")
     public Object getAirNow() {
-      long arenulaPm25 = 5079458; // <-- sensore PM2.5 giusto
-      return client.latestMeasurementBySensor(arenulaPm25);
+      long villaGuglielmiPm25 = 21829;
+      return client.latestMeasurementBySensor(villaGuglielmiPm25);
     }
 
     @GetMapping("/api/ping")
@@ -29,8 +29,8 @@ public class AirQualityController {
     
     @GetMapping("/api/air/now/compact")
     public Map<String, Object> getAirNowCompact() {
-      long sensorId = 5079458;
-      String json = client.latestMeasurementBySensor(sensorId);
+    	long villaGuglielmiPm25 = 21829;
+    	  String json = client.latestMeasurementBySensor(villaGuglielmiPm25);
       try {
         var mapper = new com.fasterxml.jackson.databind.ObjectMapper();
         var root = mapper.readTree(json).path("results");
