@@ -14,27 +14,6 @@ public class OpenAqClient {
 	    this.webClient = webClient;
 	  }
 
-public String listLocationsNearRomePm25() {
-
-	String latLon = "41.7287,12.2789";
-
- System.out.println("[OpenAQ] GET /locations?coordinates=" + latLon + "&radius=12000&parameters_id=2&limit=5&country=IT");
-
- return webClient.get()
-     .uri(b -> b.path("/locations")
-                .queryParam("coordinates", latLon)   // lat,lon (NON invertire)
-                .queryParam("radius", 20000)         // in metri
-                .queryParam("parameters_id", 2)      // PM2.5
-                .queryParam("iso", "IT")         // filtra Italia
-                .queryParam("limit", 5)
-                .build())
-     .retrieve()
-     .onStatus(s -> s.is4xxClientError() || s.is5xxServerError(),
-               resp -> resp.bodyToMono(String.class)
-                           .map(msg -> new RuntimeException("OpenAQ error " + resp.statusCode() + ": " + msg)))
-     .bodyToMono(String.class)
-     .block();
-}
 
 
 
@@ -57,6 +36,13 @@ public String listLocationsNearRomePm25() {
 	      .block();
 	}
 
+  public String latestByLocation(long locationId) {
+	  return webClient.get()
+	      .uri(b -> b.path("/locations/{id}/latest").build(locationId))
+	      .retrieve()
+	      .bodyToMono(String.class)
+	      .block();
+	}
 
 
 }
